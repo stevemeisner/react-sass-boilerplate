@@ -28,7 +28,12 @@ function People() {
   return (
     <div className="people">
       {personList.map(person => (
-        <Person name={person.name} mood={person.mood} hoodieColor={person.hoodieColor} />
+        <Person
+          key={`${person.name}-${person.mood}-${person.hoodieColor}`}
+          name={person.name}
+          mood={person.mood}
+          hoodieColor={person.hoodieColor}
+        />
       ))}
     </div>
   );
