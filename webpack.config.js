@@ -8,9 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    './src/index',
-  ],
+  entry: ['./src/index'],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js',
@@ -28,9 +26,6 @@ module.exports = {
       }),
       new OptimizeCSSAssetsPlugin({}),
     ],
-    splitChunks: {
-      chunks: 'all',
-    },
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -54,12 +49,7 @@ module.exports = {
       // CSS
       {
         test: /\.(sa|sc|c)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
         include: path.join(__dirname, 'src'),
       },
     ],

@@ -4,12 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --mode production",
+    "start": "webpack-dev-server --mode development",
     "eslint-fix": "eslint --fix \"src/**/*.js\"",
     "build": "webpack --mode production"
   },
   "dependencies": {
     "autoprefixer": "^9.4.9",
+    "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },
@@ -40,5 +41,12 @@
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1",
     "webpack-hot-middleware": "^2.24.3"
-  }
+  },
+  "browserslist": [
+    "Chrome >= 59",
+    "Firefox >= 54",
+    "Safari >= 8",
+    "Explorer >= 10",
+    "last 4 Edge versions"
+  ]
 }
