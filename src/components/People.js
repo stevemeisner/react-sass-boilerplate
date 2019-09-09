@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Person from './Person';
 
 function People() {
@@ -25,6 +25,13 @@ function People() {
     },
   ];
 
+  const defaultNameState = '🤖 Slackbot';
+  const [favName, setFavName] = useState(defaultNameState);
+
+  useEffect(() => {
+    document.title = `${favName} is the current favorite. 💖`;
+  }, [favName]);
+
   return (
     <div className="people">
       {personList.map(person => (
@@ -33,6 +40,8 @@ function People() {
           name={person.name}
           mood={person.mood}
           hoodieColor={person.hoodieColor}
+          setFavName={setFavName}
+          fav={favName === person.name}
         />
       ))}
     </div>

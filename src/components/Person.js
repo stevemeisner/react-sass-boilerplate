@@ -1,40 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 function Person(props) {
-  const { mood, hoodieColor, name } = props;
-  const [favName, setFav] = useState('🤖 Slackbot');
-
-  const unmarkAllAsFavorite = () => {
-    const people = document.querySelectorAll('.person');
-    [...people].forEach((person) => {
-      person.classList.remove('fav-fav');
-
-      const button = person.querySelector('a');
-      button.text = 'set as favorite';
-    });
-  };
-
-  useEffect(() => {
-    document.title = `${favName} is the current favorite. 💖`;
-  }, [favName]);
+  const {
+    mood, hoodieColor, name, setFavName, fav,
+  } = props;
 
   const markAsFavorite = (e, personName) => {
     e.preventDefault();
-    unmarkAllAsFavorite();
 
-    setFav(personName); // having fun with the hook
-
-    document.querySelector(`.${personName}`).classList.add('fav-fav');
-    e.currentTarget.text = '💖 The Favorite';
+    setFavName(personName);
   };
 
+  const favClass = fav ? 'fav-fav' : null;
+
   return (
-    <div className={`person ${name}`}>
+    <div className={`person ${name} ${favClass}`}>
       <h1>{`${mood} ${name}`}</h1>
       <p>{`${hoodieColor} hoodie today`}</p>
       <a href="#fav" onClick={e => markAsFavorite(e, name)}>
-        set as favorite
+        {fav ? '💖 The Favorite' : 'set as favorite'}
       </a>
     </div>
   );
@@ -50,6 +35,8 @@ Person.propTypes = {
   name: PropTypes.string,
   mood: PropTypes.string,
   hoodieColor: PropTypes.string,
+  fav: PropTypes.bool.isRequired,
+  setFavName: PropTypes.func.isRequired,
 };
 
 export default Person;
