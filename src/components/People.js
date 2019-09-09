@@ -25,9 +25,9 @@ function People() {
     },
   ];
 
-  const defaultNameState = '🤖 Slackbot';
-  const [favName, setFavName] = useState(defaultNameState);
+  const [favName, setFavName] = useState('🤖 Slackbot');
 
+  // watch for `favName` to change, and do a thing (side effect)
   useEffect(() => {
     document.title = `${favName} is the current favorite. 💖`;
   }, [favName]);
