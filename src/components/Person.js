@@ -18,7 +18,7 @@ function Person(props) {
     <div className={`person ${name} ${favClass}`}>
       <h1>{`${mood} ${name}`}</h1>
       <p>{`${hoodieColor} hoodie today`}</p>
-      <a href="#fav" onClick={e => markAsFavorite(e, name)}>
+      <a href="#fav" onClick={(e) => markAsFavorite(e, name)}>
         {fav ? '💖 The Favorite' : 'set as favorite'}
       </a>
     </div>

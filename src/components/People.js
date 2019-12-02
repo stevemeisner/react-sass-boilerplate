@@ -34,7 +34,7 @@ function People() {
 
   return (
     <div className="people">
-      {personList.map(person => (
+      {personList.map((person) => (
         <Person
           key={`${person.name}-${person.mood}-${person.hoodieColor}`}
           name={person.name}
